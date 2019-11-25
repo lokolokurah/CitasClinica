@@ -63,7 +63,7 @@ public class CitasTest {
 	
 	@Test
 	public void constructorCapacidadValidaCreaCitasCorrectamente() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		assertThat(CITAS_NO_CREADAS, citas, not(nullValue()));
 		assertThat(CITAS_NO_CREADAS, citas.getCapacidad(), is(5));
 		assertThat(TAMANO_NO_ESPERADO, citas.getTamano(), is(0));
@@ -71,9 +71,9 @@ public class CitasTest {
 	
 	@Test
 	public void constructorCapacidadNoValidaLanzaExcepcion() {
-		Citas citas = null;
+		Cita citas = null;
 		try {
-			citas = new Citas(0);
+			citas = new Cita(0);
 			fail(OPERACION_NO_PERMITIDA);
 		} catch (IllegalArgumentException e) {
 			assertThat(MENSAJE_NO_CORRECTO, e.getMessage(), is(ERROR_CAPACIDAD_NO_CORRECTA));
@@ -82,7 +82,7 @@ public class CitasTest {
 			fail(TIPO_NO_CORRECTO);
 		}
 		try {
-			citas = new Citas(-1);
+			citas = new Cita(-1);
 			fail(OPERACION_NO_PERMITIDA);
 		} catch (IllegalArgumentException e) {
 			assertThat(MENSAJE_NO_CORRECTO, e.getMessage(), is(ERROR_CAPACIDAD_NO_CORRECTA));
@@ -94,7 +94,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarCitaValidaConCitasVaciasInsertaCitaCorrectamente() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			assertThat(TAMANO_NO_ESPERADO, citas.getTamano(), is(1));
@@ -108,7 +108,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarDosCitasValidasInsertaCitasCorrectamente() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -126,7 +126,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarTresCitasValidasInsertaCitasCorrectamente() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -148,7 +148,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarCitaNulaLanzaExcepcion() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(null);
 			fail(CITA_NULA);
@@ -162,7 +162,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarCitaRepetidaLanzaExcepcion() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -175,7 +175,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(TIPO_NO_CORRECTO);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita2);
 			citas.insertar(cita1);
@@ -188,7 +188,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(TIPO_NO_CORRECTO);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita2);
 			citas.insertar(cita3);
@@ -205,7 +205,7 @@ public class CitasTest {
 	
 	@Test
 	public void insertarCitaValidaConCitasLlenasLanzaExcepcion() {
-		Citas citas = new Citas(2);
+		Cita citas = new Cita(2);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -226,7 +226,7 @@ public class CitasTest {
 	
 	@Test
 	public void borrarCitaExistenteBorraCitaCorrectamente() throws OperationNotSupportedException {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.borrar(cita1);
@@ -235,7 +235,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(EXCEPCION_NO_PROCEDE);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -246,7 +246,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(EXCEPCION_NO_PROCEDE);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -257,7 +257,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(EXCEPCION_NO_PROCEDE);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -270,7 +270,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(EXCEPCION_NO_PROCEDE);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -283,7 +283,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(EXCEPCION_NO_PROCEDE);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -300,7 +300,7 @@ public class CitasTest {
 	
 	@Test
 	public void borrarCitaNoExistenteLanzaExcepcion() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.borrar(cita2);
@@ -311,7 +311,7 @@ public class CitasTest {
 		} catch (Exception e) {
 			fail(TIPO_NO_CORRECTO);
 		}
-		citas = new Citas(5);
+		citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -327,7 +327,7 @@ public class CitasTest {
 	
 	@Test
 	public void borrarCitaNulaLanzaExcepcion() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.borrar(null);
@@ -342,7 +342,7 @@ public class CitasTest {
 	
 	@Test
 	public void getCitasDiaValidoDevuelveLasCitasDeEseDia() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
@@ -362,7 +362,7 @@ public class CitasTest {
 	
 	@Test
 	public void getCitasDiaNuloLanzaExcepcion() {
-		Citas citas = new Citas(5);
+		Cita citas = new Cita(5);
 		try {
 			citas.insertar(cita1);
 			citas.insertar(cita2);
