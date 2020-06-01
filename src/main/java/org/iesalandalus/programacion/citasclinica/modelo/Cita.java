@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.citasclinica.modelo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Cita {
 
@@ -48,39 +49,26 @@ public class Cita {
 		this.paciente = new Paciente(paciente);
 	}
 
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((fechaHora == null) ? 0 : fechaHora.hashCode());
-		result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
-		return result;
+		return Objects.hash(fechaHora);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (!(obj instanceof Cita)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Cita other = (Cita) obj;
-		if (fechaHora == null) {
-			if (other.fechaHora != null)
-				return false;
-		} else if (!fechaHora.equals(other.fechaHora))
-			return false;
-		if (paciente == null) {
-			if (other.paciente != null)
-				return false;
-		} else if (!paciente.equals(other.paciente))
-			return false;
-		return true;
+		return Objects.equals(fechaHora, other.fechaHora);
 	}
 
 	@Override
 	public String toString() {
-		return paciente.toString() + ", fechaHora=" + fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))	+ "";
+		return paciente.toString() + ", fechaHora=" + fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "";
 	}
 }
