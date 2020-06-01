@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Cita {
 
-	public static final String FORMATO_FECHA_HORA = ("yyyy, mm, dd, hh, mm");
+	public static final String FORMATO_FECHA_HORA = ("dd/MM/yyyy HH:mm");
 	private LocalDateTime fechaHora;
 	public Paciente paciente;
 
@@ -69,6 +69,6 @@ public class Cita {
 
 	@Override
 	public String toString() {
-		return paciente.toString() + ", fechaHora=" + fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "";
+		return paciente.toString() + ", fechaHora=" + fechaHora.format(DateTimeFormatter.ofPattern(FORMATO_FECHA_HORA)) + "";
 	}
 }
