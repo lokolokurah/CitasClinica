@@ -26,6 +26,32 @@ public class MainApp {
 		ejecutarOpcion(Consola.elegirOpcion());
 	}
 	
+	private static void ejecutarOpcion(Opciones opcion) throws OperationNotSupportedException 
+	{
+		switch (opcion)
+		{
+		case SALIR:
+			System.out.println("");
+			System.out.print("¡Sesión terminada!");
+			break;
+		case INSERTAR_CITA:
+			insertarCita();
+			break;
+		case BUSCAR_CITA:
+			buscarCita();
+			break;
+		case BORRAR_CITA:
+			borrarCita();
+			break;
+		case MOSTRAR_CITAS_DIA:
+			mostrarCitasDia();
+			break;
+		case MOSTRAR_CITAS:
+			mostrarCitas();
+			break;
+		}
+	}
+	
 	private static void insertarCita() throws OperationNotSupportedException {
 		try 
 		{
@@ -103,35 +129,6 @@ public class MainApp {
 
 	}
 
-	private static void mostrarCitas() throws OperationNotSupportedException 
-	{
-		System.out.println("");
-		System.out.println("Lista de todas las citas");
-		System.out.println("_______________________");
-		if (listaCitas.getTamano() == 0) 
-		{
-			System.out.println("");
-			System.out.println("No hay citas para mostrar :(");
-			System.out.println("");
-			Consola.mostrarMenu();
-			ejecutarOpcion(Consola.elegirOpcion());
-		}
-		else 
-		{
-			Cita[] citas = listaCitas.getCitas();
-			for (Cita cita : citas)
-			{
-				if (cita != null)
-				{
-					System.out.println(cita);
-				}
-			}
-			System.out.println("");
-			Consola.mostrarMenu();
-			ejecutarOpcion(Consola.elegirOpcion());
-		}
-	}
-
 	private static void mostrarCitasDia() throws OperationNotSupportedException 
 	{
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -171,29 +168,32 @@ public class MainApp {
 		}
 	}
 
-	private static void ejecutarOpcion(Opciones opcion) throws OperationNotSupportedException 
+	private static void mostrarCitas() throws OperationNotSupportedException 
 	{
-		switch (opcion)
+		System.out.println("");
+		System.out.println("Lista de todas las citas");
+		System.out.println("_______________________");
+		if (listaCitas.getTamano() == 0) 
 		{
-		case SALIR:
 			System.out.println("");
-			System.out.print("¡Sesión terminada!");
-			break;
-		case INSERTAR_CITA:
-			insertarCita();
-			break;
-		case BUSCAR_CITA:
-			buscarCita();
-			break;
-		case BORRAR_CITA:
-			borrarCita();
-			break;
-		case MOSTRAR_CITAS_DIA:
-			mostrarCitasDia();
-			break;
-		case MOSTRAR_CITAS:
-			mostrarCitas();
-			break;
+			System.out.println("No hay citas para mostrar :(");
+			System.out.println("");
+			Consola.mostrarMenu();
+			ejecutarOpcion(Consola.elegirOpcion());
+		}
+		else 
+		{
+			Cita[] citas = listaCitas.getCitas();
+			for (Cita cita : citas)
+			{
+				if (cita != null)
+				{
+					System.out.println(cita);
+				}
+			}
+			System.out.println("");
+			Consola.mostrarMenu();
+			ejecutarOpcion(Consola.elegirOpcion());
 		}
 	}
 	
