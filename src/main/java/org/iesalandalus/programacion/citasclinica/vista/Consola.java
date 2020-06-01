@@ -21,6 +21,8 @@ public class Consola {
 	public static void mostrarMenu() 
 	{
 		System.out.println("Menú");
+		System.out.println("_________________________");
+		System.out.println("");
 		System.out.println("1 - Insertar cita.");
 		System.out.println("2 - Buscar cita.");
 		System.out.println("3 - Borrar cita.");
@@ -32,11 +34,12 @@ public class Consola {
 	public static Opciones elegirOpcion() 
 	{
 		Opciones[] opcion = Opciones.values();
-		System.out.print("Escoja una opción:");
+		System.out.println("");
+		System.out.println("Escoja una opción");
 		int opcionElegida = Entrada.entero();
 		while (opcionElegida < 0 || opcionElegida > 5) 
 		{
-			System.out.print("Por favor, escoge una opción entre 0 y 5 :)");
+			System.out.println("Por favor, escoge una opción entre 0 y 5:");
 			opcionElegida = Entrada.entero();
 		}
 		return opcion[opcionElegida];
@@ -52,11 +55,11 @@ public class Consola {
 	{
 		Paciente paciente;
 		System.out.println("");
-		System.out.print("Introduzca el nombre: ");
+		System.out.println("Introduzca el nombre:");
 		String nombre = Entrada.cadena();
-		System.out.print("Introduzca el teléfono: ");
+		System.out.println("Introduzca el teléfono:");
 		String telefono = Entrada.cadena();
-		System.out.print("Introduzca el DNI: ");
+		System.out.println("Introduzca el DNI:");
 		String dni = Entrada.cadena();
 		paciente = new Paciente(nombre, dni, telefono);
 		return paciente;
@@ -72,7 +75,7 @@ public class Consola {
 		{
 			try 
 			{
-				System.out.print("Introduzca una fecha y hora con el siguiente formato: dd/MM/aaaa HH:mm");
+				System.out.println("Introduzca una fecha y hora con el siguiente formato: dd/MM/aaaa HH:mm:");
 				fechaHora = LocalDateTime.parse(Entrada.cadena(), formatoFecha);
 				fechaValida = true;
 			} catch (DateTimeParseException e) {
@@ -92,7 +95,7 @@ public class Consola {
 		{
 			try 
 			{
-				System.out.print("Introduzca una fecha con el siguiente formato: dd/MM/aaaa");
+				System.out.println("Introduzca una fecha con el siguiente formato: dd/MM/aaaa:");
 				fecha = LocalDate.parse(Entrada.cadena(), formatoFecha);
 				fechaValida = true;
 			} catch (DateTimeParseException e) {
