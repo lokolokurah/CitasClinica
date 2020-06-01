@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.citasclinica.modelo;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,9 +22,9 @@ public class Paciente {
 		if (copiaPaciente == null) {
 			throw new NullPointerException("ERROR: No es posible copiar un paciente nulo.");
 		} else {
-			setNombre(copiaPaciente.getNombre());
-			setDni(copiaPaciente.getDni());
-			setTelefono(copiaPaciente.getTelefono());
+			setNombre(copiaPaciente.nombre);
+			setDni(copiaPaciente.dni);
+			setTelefono(copiaPaciente.telefono);
 		}
 	}
 
@@ -32,7 +33,7 @@ public class Paciente {
 	}
 
 	public void setNombre(String nombre) {
-		if (nombre == null || nombre.equals("")) { 
+		if (nombre == null || nombre.trim().isEmpty()) { 
 			throw new NullPointerException("ERROR: El nombre de un paciente no puede ser nulo o vacío.");
 		} else
 		{
@@ -58,7 +59,7 @@ public class Paciente {
 	}
 
 	private void setDni(String dni) {
-		if (dni == null || dni.equals("")) { 
+		if (dni == null || dni.trim().isEmpty()) { 
 			throw new NullPointerException("ERROR: El DNI de un paciente no puede ser nulo o vacío.");
 		} else {
 			Pattern patron;
@@ -105,7 +106,7 @@ public class Paciente {
 	}
 
 	public void setTelefono(String telefono) {
-		if (telefono == null || telefono.equals("")) { 
+		if (telefono == null || telefono.trim().isEmpty()) { 
 			throw new NullPointerException("ERROR: El teléfono de un paciente no puede ser nulo o vacío.");
 		} else if (telefono.matches(ER_TELEFONO))
 		{
@@ -117,48 +118,29 @@ public class Paciente {
 		}
 	}
 
+	
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
-		return result;
+		return Objects.hash(dni);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (!(obj instanceof Paciente)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Paciente other = (Paciente) obj;
-		if (dni == null) {
-			if (other.dni != null)
-				return false;
-		} else if (!dni.equals(other.dni))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (telefono == null) {
-			if (other.telefono != null)
-				return false;
-		} else if (!telefono.equals(other.telefono))
-			return false;
-		return true;
+		return Objects.equals(dni, other.dni);
 	}
 
 	@Override
 	public String toString() {
-		String toString = String.format("nombre=%s (%s), DNI=%s, teléfono=%s", getNombre(), getIniciales(), 
-				getDni(), getTelefono());
-		return toString;  
+		return String.format("nombre=%s (%s), DNI=%s, teléfono=%s", getNombre(), getIniciales(), 
+				getDni(), getTelefono());  
 	}
 
 	public String getIniciales()
